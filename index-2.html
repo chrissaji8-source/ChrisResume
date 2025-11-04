@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CaptureIt | Chris Sam Saji</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background-color: #000;
+    color: #fff;
+  }
+
+  /* Container for all slides */
+  .slides {
+    height: 100vh;
+    width: 100vw;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
+
+  section {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+    position: relative;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255,215,0,0.15), transparent 70%);
+    z-index: -1;
+  }
+
+  h1, h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffd700;
+    text-shadow: 0 0 10px #ffd700, 0 0 20px #ffae00;
+  }
+
+  h1 { font-size: 3rem; margin-bottom: 10px; }
+  p { max-width: 700px; line-height: 1.6; color: #eee; }
+
+  /* Home slide background animation */
+  #home {
+    background: linear-gradient(135deg, #000, #111, #222);
+    background-size: 400% 400%;
+    animation: bgShift 10s ease infinite;
+  }
+  @keyframes bgShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Slide color accents */
+  #about { background: #0f0f0f; }
+  #skills { background: #111; }
+  #projects { background: #151515; }
+  #contact { background: #0b0b0b; }
+
+  /* Floating neon shapes */
+  .float {
+    position: absolute;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: rgba(255,215,0,0.5);
+    animation: float 10s linear infinite;
+  }
+  @keyframes float {
+    from { transform: translateY(100vh) scale(0.5); opacity: 0; }
+    to { transform: translateY(-10vh) scale(1.2); opacity: 1; }
+  }
+
+  /* Navigation dots */
+  .nav-dots {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 999;
+  }
+  .dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .dot.active { background: #ffd700; box-shadow: 0 0 10px #ffd700; }
+
+  /* Buttons */
+  .btn {
+    margin-top: 20px;
+    background: transparent;
+    border: 2px solid #ffd700;
+    color: #ffd700;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .btn:hover {
+    background: #ffd700;
+    color: #000;
+    box-shadow: 0 0 15px #ffd700;
+  }
+
+  /* Contact icons */
+  .contact-info a {
+    color: #ffd700;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: 0.3s;
+  }
+  .contact-info a:hover { text-shadow: 0 0 10px #ffd700; }
+
+  /* Responsive */
+  @media(max-width:768px){
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    p { font-size: 0.95rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="slides">
+
+  <!-- ===== NAVIGATION DOTS ===== -->
+  <div class="nav-dots">
+    <div class="dot active" data-target="#home"></div>
+    <div class="dot" data-target="#about"></div>
+    <div class="dot" data-target="#skills"></div>
+    <div class="dot" data-target="#projects"></div>
+    <div class="dot" data-target="#contact"></div>
+  </div>
+
+  <!-- ===== HOME ===== -->
+  <section id="home">
+    <div class="float" style="left:10%;animation-delay:1s;"></div>
+    <div class="float" style="left:60%;animation-delay:3s;"></div>
+    <div class="float" style="left:80%;animation-delay:5s;"></div>
+    <h1>CaptureIt</h1>
+    <p>Welcome to the cinematic world of <strong>Chris Sam Saji</strong> — a storyteller through the lens. Scroll or use arrows ↓</p>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I’m a passionate <strong>cinematographer</strong> and <strong>video editor</strong> crafting stories through light, motion, and emotion.
+      My work blends technical precision with artistic intuition to make visuals feel alive.</p>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <p>🎬 Cinematography · 🎞 Video Editing (Premiere Pro, DaVinci Resolve) · 🎨 Color Grading · 🎧 Sound Design · 🚁 Drone Filming</p>
+    <button class="btn" onclick="alert('Lights, Camera, Action! ✨')">Click Me</button>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <p><strong>City Lights</strong> – Short Film | <strong>Echoes</strong> – Music Video | <strong>Café Aroma</strong> – Brand Ad</p>
+    <p>Each frame crafted with emotion, rhythm, and cinematic artistry.</p>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
+    <h2>Let’s Connect</h2>
+    <p class="contact-info">
+      <a href="mailto:chris@example.com">📧 Email</a> |
+      <a href="tel:+919321642685">📞 Call</a> |
+      <a href="https://www.coolwebsite.com" target="_blank">🌐 Website</a>
+    </p>
+    <button class="btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to Top</button>
+  </section>
+
+</div>
+
+<script>
+  const slides = document.querySelector('.slides');
+  const dots = document.querySelectorAll('.dot');
+  const sections = document.querySelectorAll('section');
+
+  // Update active dot on scroll
+  slides.addEventListener('scroll', () => {
+    let index = Math.round(slides.scrollTop / window.innerHeight);
+    dots.forEach(dot => dot.classList.remove('active'));
+    if (dots[index]) dots[index].classList.add('active');
+  });
+
+  // Dot click scroll
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const target = document.querySelector(dot.dataset.target);
+      slides.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
+    });
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    const current = Math.round(slides.scrollTop / window.innerHeight);
+    if (e.key === 'ArrowDown' && current < sections.length - 1) {
+      slides.scrollTo({ top: (current + 1) * window.innerHeight, behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' && current > 0) {
+      slides.scrollTo({ top: (current - 1) * window.innerHeight, behavior: 'smooth' });
+    }
+  });
+</script>
+</body>
+</html>
